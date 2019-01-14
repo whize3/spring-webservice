@@ -13,10 +13,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class PostServiceTest {
+public class PostsServiceTest {
 
     @Autowired
-    private PostService postService;
+    private PostsService postService;
 
     @Autowired
     private PostsRepository postsRepository;
