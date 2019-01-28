@@ -15,7 +15,6 @@ public class Application {
         new SpringApplicationBuilder(Application.class)
                 .properties(APPLICATION_LOCATIONS)
                 .run(args);
-        ;
     }
 
 }
