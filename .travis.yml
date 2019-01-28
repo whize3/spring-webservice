@@ -31,5 +31,5 @@ deploy:
     acl: public_read
     wait-until-deployed: true
     on:
-      repo: whize3/spring-webservice #Github 주소
+      repo: whize3/spring-webservice
       branch: master
