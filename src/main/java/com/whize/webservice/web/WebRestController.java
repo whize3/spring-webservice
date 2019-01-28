@@ -3,10 +3,13 @@ package com.whize.webservice.web;
 import com.whize.webservice.domain.posts.PostsRepository;
 import com.whize.webservice.service.PostsService;
 import lombok.AllArgsConstructor;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Arrays;
 
 @RestController
 @AllArgsConstructor
@@ -18,6 +21,7 @@ public class WebRestController {
     // lombok 어노테이션을 사용함으로써 의존성 관계가 변경될때마다 생성자 코드를 수정하지 않아도 된다.
    private PostsRepository postsRepository;
    private PostsService postsService;
+   private Environment env;
 
     @GetMapping("/hello")
     public String hello(){
@@ -27,5 +31,12 @@ public class WebRestController {
     @PostMapping("/posts")
     public Long savePosts(@RequestBody PostSaveRequestDto dto){
         return postsService.save(dto);
+    }
+
+    @GetMapping("/profile")
+    public String getProfile () {
+        return Arrays.stream(env.getActiveProfiles())
+                .findFirst()
+                .orElse("");
     }
 }
